@@ -16,36 +16,10 @@ import java.util.List;
 
 
 @RestController
-//@RequestMapping("/userProfile")
+@RequestMapping("/userProfile")
 public class ProfileController {
     @Autowired
     private ProfileRepository repository;
-    private String VIN;
-    private String color;
-    private Integer miles;
-
-
-    @RequestMapping(value = "/")
-    public ResponseEntity<UserProfile> get() {
-
-        UserProfile car = new UserProfile();
-        car.setColor("Blue");
-        car.setMiles(100);
-        car.setVIN("1234");
-
-        return new ResponseEntity<UserProfile>(car, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/", method = RequestMethod.POST)
-    public ResponseEntity<UserProfile> update(@RequestBody UserProfile car) {
-
-        if (car != null) {
-            car.setMiles(car.getMiles() + 100);
-        }
-
-        // TODO: call persistence layer to update
-        return new ResponseEntity<UserProfile>(car, HttpStatus.OK);
-    }
 
     @PostMapping("/")
     public ResponseEntity<PostResponse> createPet(@Valid @RequestBody UserProfile userProfile) {
